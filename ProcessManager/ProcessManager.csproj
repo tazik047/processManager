@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,8 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataGridViewSortableBinding, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b24ffdddc84bbf59, processorArchitecture=MSIL">
+      <HintPath>..\packages\SortableBindingList.1.0.0\lib\net40\DataGridViewSortableBinding.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,14 +52,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComputerSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComputerSettings.Designer.cs">
+      <DependentUpon>ComputerSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Computer.cs" />
+    <Compile Include="Models\ComputerView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Models\ProcessModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ComputerSettings.resx">
+      <DependentUpon>ComputerSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\ComputerView.resx">
+      <DependentUpon>ComputerView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +89,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\ProcessManager.Models.ProcessModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +104,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
