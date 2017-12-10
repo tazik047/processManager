@@ -68,6 +68,7 @@
     <Compile Include="Models\ComputerView.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Models\LocalComputer.cs" />
     <Compile Include="Models\ProcessModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

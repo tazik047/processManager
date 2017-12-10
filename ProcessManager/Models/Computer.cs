@@ -1,34 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Management;
 
 namespace ProcessManager.Models
 {
-	public class LocalComputer : Computer
-	{
-		public LocalComputer() : base("Мой компьютер") { }
-
-		public override ProcessModel[] GetAllProcesses()
-		{
-			return Process
-				.GetProcesses()
-				.Select(ConvertToProcessModel)
-				.ToArray();
-		}
-
-		public override void KillProcess(int processId)
-		{
-			Process.GetProcessById(processId).Kill();
-		}
-
-		public override void RunProcess(string fullName)
-		{
-			Process.Start(fullName);
-		}
-	}
-
 	public class Computer
 	{
 		public Computer(string name) : this(name, null, null, 5) { }
@@ -78,13 +54,27 @@ namespace ProcessManager.Models
 
 		public virtual void RunProcess(string fullName)
 		{
-			object[] theProcessToRun = { fullName };
 			var scope = GetManagementScope();
-			using (ManagementClass theClass = new ManagementClass(scope, new ManagementPath("Win32_Process"), new ObjectGetOptions()))
+			var options = new ObjectGetOptions();
+			using (ManagementClass processClass = new ManagementClass(scope, new ManagementPath("Win32_Process"), options))
 			{
-				theClass.InvokeMethod("Create", theProcessToRun);
+				var parameters = processClass.GetMethodParameters("Create");
+
+				var taskName = Guid.NewGuid().ToString();
+				var prepareCommand = $"schtasks /Create /sc daily /tn {taskName} /tr \"{fullName}\" /it";
+				var executeCommand = $"schtasks /run /tn {taskName} /i";
+				var deleteCommand = $"schtasks /delete /tn {taskName} /f";
+
+
+				parameters["CommandLine"] = prepareCommand;
+				processClass.InvokeMethod("Create", parameters, null);
+
+				parameters["CommandLine"] = executeCommand;
+				processClass.InvokeMethod("Create", parameters, null);
+
+				parameters["CommandLine"] = deleteCommand;
+				processClass.InvokeMethod("Create", parameters, null);
 			}
-			
 		}
 
 		public virtual void KillProcess(int processId)
@@ -99,41 +89,6 @@ namespace ProcessManager.Models
 					details.InvokeMethod("Terminate", null);
 				}
 			}
-			
-
-			/*
-			TASKKILL [/S <система> [/U <пользователь> [/P [<пароль>]]]] 
-			{ [/FI <фильтр>] [/PID <процесс> | /IM <образ>] } [/F] [/T] 
-
-			Описание: 
-			Эта команда позволяет завершить один или несколько процессов. 
-			Процесс может быть завершен по имени образа или по идентификатору процесса. 
-
-			Список параметров: 
-			/S <система> Подключаемый удаленный компьютер. 
-
-			/U [<домен>\]<пользователь> Пользовательский контекст, в котором 
-			должна выполняться эта команда. 
-
-			/P <пароль> Пароль для этого пользовательского контекста. 
-
-			Запрашивает пароль, если он не задан. 
-
-			/F Принудительное завершение процесса 
-
-
-			/FI <фильтр> Отображение задач, отвечающих 
-			указанному в фильтре критерию. 
-
-			/PID <процесс> Идентификатор процесса, который требуется 
-			завершить. 
-
-			/IM <образ> Имя образа процесса, который требуется 
-			завершить. Для указания всех процессов 
-			можно использовать символ шаблона '*'. 
-
-			/T Завершение указанного процесса 
-			и всех его дочерних процессов. */
 		}
 
 		protected ProcessModel ConvertToProcessModel(Process process)
@@ -162,8 +117,12 @@ namespace ProcessManager.Models
 		private ManagementScope GetManagementScope()
 		{
 			ConnectionOptions connection = new ConnectionOptions();
-			connection.Username = UserName;
-			connection.Password = Password;
+			if (!string.IsNullOrWhiteSpace(UserName) || !string.IsNullOrWhiteSpace(Password))
+			{
+				connection.Username = UserName;
+				connection.Password = Password;
+			}
+
 			ManagementScope scope = new ManagementScope("\\\\" + Name + "\\root\\CIMV2", connection);
 			scope.Connect();
 

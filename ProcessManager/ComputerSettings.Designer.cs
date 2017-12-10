@@ -53,7 +53,7 @@
 			this.button1.Location = new System.Drawing.Point(400, 600);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(183, 23);
-			this.button1.TabIndex = 1;
+			this.button1.TabIndex = 6;
 			this.button1.Text = "Сохранить";
 			this.button1.UseVisualStyleBackColor = true;
 			// 
@@ -64,7 +64,7 @@
 			this.button2.Location = new System.Drawing.Point(12, 600);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(183, 23);
-			this.button2.TabIndex = 2;
+			this.button2.TabIndex = 7;
 			this.button2.Text = "Отмена";
 			this.button2.UseVisualStyleBackColor = true;
 			// 
@@ -86,7 +86,7 @@
 			this.nameTextBox.Location = new System.Drawing.Point(219, 67);
 			this.nameTextBox.Name = "nameTextBox";
 			this.nameTextBox.Size = new System.Drawing.Size(348, 26);
-			this.nameTextBox.TabIndex = 3;
+			this.nameTextBox.TabIndex = 1;
 			// 
 			// label2
 			// 
@@ -118,7 +118,7 @@
 			this.userNameTextBox.Location = new System.Drawing.Point(219, 129);
 			this.userNameTextBox.Name = "userNameTextBox";
 			this.userNameTextBox.Size = new System.Drawing.Size(348, 26);
-			this.userNameTextBox.TabIndex = 3;
+			this.userNameTextBox.TabIndex = 2;
 			// 
 			// label4
 			// 
@@ -152,7 +152,7 @@
 			this.dataGridView1.Location = new System.Drawing.Point(21, 354);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.Size = new System.Drawing.Size(545, 228);
-			this.dataGridView1.TabIndex = 4;
+			this.dataGridView1.TabIndex = 5;
 			// 
 			// ProcessName
 			// 
@@ -189,7 +189,7 @@
 			this.loadIntervalControl.Location = new System.Drawing.Point(219, 263);
 			this.loadIntervalControl.Name = "loadIntervalControl";
 			this.loadIntervalControl.Size = new System.Drawing.Size(347, 26);
-			this.loadIntervalControl.TabIndex = 5;
+			this.loadIntervalControl.TabIndex = 4;
 			this.loadIntervalControl.ThousandsSeparator = true;
 			this.loadIntervalControl.Value = new decimal(new int[] {
             5,

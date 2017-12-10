@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TopPower.DataGridViewSortableBinding;
 using Timer = System.Windows.Forms.Timer;
@@ -169,6 +165,9 @@ namespace ProcessManager.Models
 			{
 				_computer = form.GetComputer();
 				_page.Text = _computer.Name;
+				timer1.Stop();
+				timer1.Interval = _computer.LoadInterval;
+				timer1.Start();
 			}
 		}
 
@@ -239,10 +238,10 @@ namespace ProcessManager.Models
 					isUpdated = true;
 				}));
 			}
-			catch
+			catch(Exception exception)
 			{
+				MessageBox.Show(exception.Message, "Произошла ошибка - " + _computer.Name);
 				isUpdated = true;
-				throw;
 			}
 		}
 
@@ -262,6 +261,12 @@ namespace ProcessManager.Models
 				}
 				
 			}
+		}
+
+		protected override void Dispose(bool disposing)
+		{
+			timer1.Stop();
+			base.Dispose(disposing);
 		}
 	}
 }

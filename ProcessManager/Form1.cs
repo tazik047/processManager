@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProcessManager.Models;
 
@@ -17,7 +10,6 @@ namespace ProcessManager
 		{
 			InitializeComponent();
 			AddComputerTabPage(new LocalComputer());
-			
 		}
 
 		private void addComputerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -39,6 +31,16 @@ namespace ProcessManager
 
 			page.Controls.Add(view);
 			tabControl1.TabPages.Add(page);
+		}
+
+		private void deleteSelectedComputer_Click(object sender, EventArgs e)
+		{
+			if (tabControl1.TabPages.Count > 0)
+			{
+				var tab = tabControl1.SelectedTab;
+				tabControl1.TabPages.Remove(tab);
+				tab.Dispose();
+			}
 		}
 	}
 }

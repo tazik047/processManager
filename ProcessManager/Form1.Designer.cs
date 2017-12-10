@@ -31,13 +31,15 @@
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.addComputerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.deleteSelectedComputer = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addComputerToolStripMenuItem});
+            this.addComputerToolStripMenuItem,
+            this.deleteSelectedComputer});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(573, 24);
@@ -62,6 +64,13 @@
 			this.tabControl1.Size = new System.Drawing.Size(549, 457);
 			this.tabControl1.TabIndex = 1;
 			// 
+			// deleteSelectedComputer
+			// 
+			this.deleteSelectedComputer.Name = "deleteSelectedComputer";
+			this.deleteSelectedComputer.Size = new System.Drawing.Size(197, 20);
+			this.deleteSelectedComputer.Text = "Удалить выбранный компьютер";
+			this.deleteSelectedComputer.Click += new System.EventHandler(this.deleteSelectedComputer_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -84,6 +93,7 @@
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem addComputerToolStripMenuItem;
 		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.ToolStripMenuItem deleteSelectedComputer;
 	}
 }
 
