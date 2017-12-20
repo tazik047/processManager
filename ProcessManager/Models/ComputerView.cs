@@ -16,13 +16,13 @@ namespace ProcessManager.Models
 		private DataGridView dataGridView1;
 		private BindingSource processModelBindingSource;
 		private System.ComponentModel.IContainer components;
+		private Timer timer1;
+		private Button button2;
+		private Button button3;
 		private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
 		private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
 		private DataGridViewTextBoxColumn pathDataGridViewTextBoxColumn;
 		private DataGridViewTextBoxColumn argumentsDataGridViewTextBoxColumn;
-		private Timer timer1;
-		private Button button2;
-		private Button button3;
 		private bool isUpdated = true;
 
 		public ComputerView(Computer computer, TabPage page)
@@ -42,13 +42,13 @@ namespace ProcessManager.Models
 			this.button1 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.processModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.button3 = new System.Windows.Forms.Button();
 			this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.pathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.argumentsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.processModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.processModelBindingSource)).BeginInit();
 			this.SuspendLayout();
@@ -97,6 +97,10 @@ namespace ProcessManager.Models
 			this.dataGridView1.Size = new System.Drawing.Size(453, 344);
 			this.dataGridView1.TabIndex = 1;
 			// 
+			// processModelBindingSource
+			// 
+			this.processModelBindingSource.DataSource = typeof(ProcessManager.Models.ProcessModel);
+			// 
 			// timer1
 			// 
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
@@ -121,27 +125,23 @@ namespace ProcessManager.Models
 			// nameDataGridViewTextBoxColumn
 			// 
 			this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-			this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+			this.nameDataGridViewTextBoxColumn.HeaderText = "Название";
 			this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
 			this.nameDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
 			// pathDataGridViewTextBoxColumn
 			// 
 			this.pathDataGridViewTextBoxColumn.DataPropertyName = "Path";
-			this.pathDataGridViewTextBoxColumn.HeaderText = "Path";
+			this.pathDataGridViewTextBoxColumn.HeaderText = "Путь";
 			this.pathDataGridViewTextBoxColumn.Name = "pathDataGridViewTextBoxColumn";
 			this.pathDataGridViewTextBoxColumn.ReadOnly = true;
 			// 
 			// argumentsDataGridViewTextBoxColumn
 			// 
 			this.argumentsDataGridViewTextBoxColumn.DataPropertyName = "Arguments";
-			this.argumentsDataGridViewTextBoxColumn.HeaderText = "Arguments";
+			this.argumentsDataGridViewTextBoxColumn.HeaderText = "Аргументы";
 			this.argumentsDataGridViewTextBoxColumn.Name = "argumentsDataGridViewTextBoxColumn";
 			this.argumentsDataGridViewTextBoxColumn.ReadOnly = true;
-			// 
-			// processModelBindingSource
-			// 
-			this.processModelBindingSource.DataSource = typeof(ProcessManager.Models.ProcessModel);
 			// 
 			// ComputerView
 			// 
