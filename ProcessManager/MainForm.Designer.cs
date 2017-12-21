@@ -1,6 +1,6 @@
 ﻿namespace ProcessManager
 {
-	partial class Form1
+	partial class MainForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -30,8 +30,8 @@
 		{
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.addComputerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.deleteSelectedComputer = new System.Windows.Forms.ToolStripMenuItem();
+			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -53,6 +53,13 @@
 			this.addComputerToolStripMenuItem.Text = "Добавить компьютер";
 			this.addComputerToolStripMenuItem.Click += new System.EventHandler(this.addComputerToolStripMenuItem_Click);
 			// 
+			// deleteSelectedComputer
+			// 
+			this.deleteSelectedComputer.Name = "deleteSelectedComputer";
+			this.deleteSelectedComputer.Size = new System.Drawing.Size(197, 20);
+			this.deleteSelectedComputer.Text = "Удалить выбранный компьютер";
+			this.deleteSelectedComputer.Click += new System.EventHandler(this.deleteSelectedComputer_Click);
+			// 
 			// tabControl1
 			// 
 			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -64,14 +71,7 @@
 			this.tabControl1.Size = new System.Drawing.Size(549, 457);
 			this.tabControl1.TabIndex = 1;
 			// 
-			// deleteSelectedComputer
-			// 
-			this.deleteSelectedComputer.Name = "deleteSelectedComputer";
-			this.deleteSelectedComputer.Size = new System.Drawing.Size(197, 20);
-			this.deleteSelectedComputer.Text = "Удалить выбранный компьютер";
-			this.deleteSelectedComputer.Click += new System.EventHandler(this.deleteSelectedComputer_Click);
-			// 
-			// Form1
+			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -79,8 +79,8 @@
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
-			this.Name = "Form1";
-			this.Text = "Form1";
+			this.Name = "MainForm";
+			this.Text = "Диспетчер задач";
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
