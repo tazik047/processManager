@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Management;
 
 namespace ProcessManager.Models
 {
 	public class Computer
 	{
-		public Computer(string name) : this(name, null, null, 5) { }
-
 		public Computer(string name, string userName, string password, int loadInterval)
 		{
 			Name = name;
@@ -33,7 +30,7 @@ namespace ProcessManager.Models
 			var result = new List<ProcessModel>();
 
 			var scope = GetManagementScope();
-				var query = new ObjectQuery("Select ProcessId, ExecutablePath, Name, CommandLine From Win32_Process");
+			var query = new ObjectQuery("Select ProcessId, ExecutablePath, Name, CommandLine From Win32_Process");
 
 			using (var searcher = new ManagementObjectSearcher(scope, query))
 			{
@@ -88,29 +85,6 @@ namespace ProcessManager.Models
 				{
 					details.InvokeMethod("Terminate", null);
 				}
-			}
-		}
-
-		protected ProcessModel ConvertToProcessModel(Process process)
-		{
-			return new ProcessModel
-			{
-				Id = process.Id,
-				Name = process.ProcessName,
-				Path = GetProcessFileName(process),
-				Arguments = process.StartInfo.Arguments
-			};
-		}
-
-		private string GetProcessFileName(Process process)
-		{
-			try
-			{
-				return process.MainModule.FileName;
-			}
-			catch (Exception)
-			{
-				return string.Empty;
 			}
 		}
 

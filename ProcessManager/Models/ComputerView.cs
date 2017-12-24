@@ -173,7 +173,7 @@ namespace ProcessManager.Models
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			var result = Microsoft.VisualBasic.Interaction.InputBox("Введите путь к файлу которые необходимо запустить");
+			var result = Microsoft.VisualBasic.Interaction.InputBox("Введите путь к файлу которые необходимо запустить", "Запуск нового процесса");
 			if (!string.IsNullOrWhiteSpace(result))
 			{
 				try

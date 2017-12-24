@@ -20,14 +20,12 @@
 			return false;
 		}
 
-		protected bool Equals(ProcessModel other)
+		private bool Equals(ProcessModel other)
 		{
-			return Id == other.Id && string.Equals(Name, other.Name) && string.Equals(Path, other.Path) && string.Equals(Arguments, other.Arguments);
-		}
-
-		public override int GetHashCode()
-		{
-			return Id;
+			return Id == other.Id 
+				&& string.Equals(Name, other.Name) 
+				&& string.Equals(Path, other.Path) 
+				&& string.Equals(Arguments, other.Arguments);
 		}
 	}
 }

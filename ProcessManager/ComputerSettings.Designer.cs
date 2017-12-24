@@ -224,7 +224,7 @@
 			this.Name = "ComputerSettings";
 			this.ShowIcon = false;
 			this.ShowInTaskbar = false;
-			this.Text = "ComputerSettings";
+			this.Text = "Настройки компьютера";
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.loadIntervalControl)).EndInit();
 			this.ResumeLayout(false);
